@@ -1,0 +1,35 @@
+syntax = "proto3";
+package proto;
+
+message NewEntry{
+  string source_id = 1;
+  string level = 2;
+  string tag = 3;
+  string content = 4;
+  string timestamp = 5;
+}
+message Entry{
+  string id = 1;
+  string source_id = 2;
+  string level = 3;
+  string tag = 4;
+  string content = 5;
+  string timestamp_occurred = 6;
+  string timestamp_stored = 7;
+}
+
+message PageQuery{
+  int64 take = 1;
+  enum Direction{
+    ASCENDING = 0;
+    DESCENDING = 1;
+  }
+  Direction direction = 2;
+  string last_timestamp = 3;
+}
+
+
+service LogEntry {
+  rpc insert (NewEntry) returns (Entry);
+  rpc getN(PageQuery) returns (stream Entry);
+}

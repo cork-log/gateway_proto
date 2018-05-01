@@ -1,0 +1,20 @@
+syntax = "proto3";
+package proto;
+
+message Source {
+  string name = 1;
+  string id = 2;
+}
+
+message NewSource {
+  string name = 1;
+}
+
+message IdQuery{
+  string id = 1;
+}
+
+service LogSource {
+  rpc create (NewSource) returns (Source);
+  rpc get (IdQuery) returns (Source);
+}
