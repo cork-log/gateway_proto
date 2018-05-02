@@ -6,7 +6,7 @@ message NewEntry{
   string level = 2;
   string tag = 3;
   string content = 4;
-  string timestamp = 5;
+  string timestamp_occurred = 5;
 }
 message Entry{
   string id = 1;
