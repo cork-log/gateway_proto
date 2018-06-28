@@ -36,5 +36,5 @@ message PageQuery{
 
 service LogEntry {
   rpc insert (NewEntry) returns (Entry);
-  rpc getN(EntryQuery) returns (stream Entry);
+  rpc get_n(EntryQuery) returns (stream Entry);
 }
