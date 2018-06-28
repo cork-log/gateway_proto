@@ -18,6 +18,11 @@ message Entry{
   string timestamp_stored = 7;
 }
 
+message EntryQuery {
+  string source_id = 1;
+  PageQuery query = 2;
+}
+
 message PageQuery{
   int64 take = 1;
   enum Direction{
@@ -31,5 +36,5 @@ message PageQuery{
 
 service LogEntry {
   rpc insert (NewEntry) returns (Entry);
-  rpc getN(PageQuery) returns (stream Entry);
+  rpc getN(EntryQuery) returns (stream Entry);
 }
