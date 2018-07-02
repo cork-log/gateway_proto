@@ -13,8 +13,10 @@ message NewSource {
 message IdQuery{
   string id = 1;
 }
+message Empty {}
 
 service LogSource {
   rpc create (NewSource) returns (Source);
   rpc get (IdQuery) returns (Source);
+  rpc get_sources(Empty) returns (stream Source);
 }
