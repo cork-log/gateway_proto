@@ -4,13 +4,13 @@ package proto;
 message Source {
   string name = 1;
   string id = 2;
-  repeated Token tokens = 3;
+  repeated AuthContext contexts = 3;
 }
-message Token{
+message AuthContext{
   string id = 1;
   string name = 2;
 }
-message NewToken{
+message NewAuthContext{
   string name = 1;
 }
 
@@ -33,7 +33,7 @@ service LogSource {
   rpc get (IdQuery) returns (Source);
   rpc get_sources(Empty) returns (stream Source);
   rpc request_token (IdQuery) returns (TokenResponse);
-  rpc create_auth_context (NewToken) returns (Token);
-  rpc toggle_auth_context (IdQuery) returns (Token);
-  rpc get_auth_contexts (IdQuery) returns (stream Token);
+  rpc create_auth_context (NewAuthContext) returns (AuthContext);
+  rpc toggle_auth_context (IdQuery) returns (AuthContext);
+  rpc get_auth_contexts (IdQuery) returns (stream AuthContext);
 }
