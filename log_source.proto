@@ -9,6 +9,8 @@ message Source {
 message AuthContext{
   string id = 1;
   string name = 2;
+  bool enabled = 3;
+  string source_id = 4;
 }
 message NewAuthContext{
   string name = 1;
