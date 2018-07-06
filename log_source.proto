@@ -4,6 +4,14 @@ package proto;
 message Source {
   string name = 1;
   string id = 2;
+  repeated Token tokens = 3;
+}
+message Token{
+  string id = 1;
+  string name = 2;
+}
+message NewToken{
+  string name = 1;
 }
 
 message NewSource {
@@ -13,10 +21,19 @@ message NewSource {
 message IdQuery{
   string id = 1;
 }
+
+message TokenResponse{
+  string token = 1;
+}
+
 message Empty {}
 
 service LogSource {
   rpc create (NewSource) returns (Source);
   rpc get (IdQuery) returns (Source);
   rpc get_sources(Empty) returns (stream Source);
+  rpc request_token (IdQuery) returns (TokenResponse);
+  rpc create_auth_context (NewToken) returns (Token);
+  rpc toggle_auth_context (IdQuery) returns (Token);
+  rpc get_auth_contexts (IdQuery) returns (stream Token);
 }
