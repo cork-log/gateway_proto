@@ -48,9 +48,9 @@ message NewJobStatusEntry {
 }
 
 service SourceJob{
-  rpc CreateJobDescriptor (NewJobDescriptor) returns (JobDescriptor);
-  rpc ModifyJobDescriptor (JobDescriptor) returns (JobDescriptor);
-  rpc CreateJobStatusType (NewJobStatusType) returns (JobStatusType);
-  rpc EditJobStatusType (JobStatusType) returns (JobStatusType);
-  rpc CreateJobStatusEntry(NewJobStatusEntry) returns (JobStatusEntry);
+  rpc create_job_descriptor (NewJobDescriptor) returns (JobDescriptor);
+  rpc modify_job_descriptor (JobDescriptor) returns (JobDescriptor);
+  rpc create_job_status_type (NewJobStatusType) returns (JobStatusType);
+  rpc edit_job_status_type (JobStatusType) returns (JobStatusType);
+  rpc create_job_status_entry(NewJobStatusEntry) returns (JobStatusEntry);
 }
