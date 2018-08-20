@@ -1,0 +1,56 @@
+syntax = "proto3";
+package proto;
+
+message NewJobDescriptor{
+  string source_id = 1;
+  string name = 2;
+  float tolerance = 3;
+  uint32 frequency = 4;
+}
+
+message JobDescriptor{
+  string id = 1;
+  string source_id = 2;
+  string name = 3;
+  float tolerance = 4;
+  uint32 frequency = 5;
+}
+
+message NewJobStatusType {
+  string name = 1;
+  int32 value = 2;
+  bool good = 3;
+  string descriptor_id = 4;
+}
+
+message JobStatusType {
+  string id = 1;
+  string name = 2;
+  int32 value = 3;
+  bool good = 4;
+  string descriptor_id = 5;
+}
+
+message JobStatusEntry {
+  string id = 1;
+  string note = 2;
+  bool late = 3;
+  int32 type = 4;
+  string time_expected_at = 5;
+  string time_occurred = 6;
+  string time_stored = 7;
+}
+
+message NewJobStatusEntry {
+  string note = 1;
+  int32 type = 2;
+  string time_occurred = 3;
+}
+
+service SourceJob{
+  rpc CreateJobDescriptor (NewJobDescriptor) returns (JobDescriptor);
+  rpc ModifyJobDescriptor (JobDescriptor) returns (JobDescriptor);
+  rpc CreateJobStatusType (NewJobStatusType) returns (JobStatusType);
+  rpc EditJobStatusType (JobStatusType) returns (JobStatusType);
+  rpc CreateJobStatusEntry(NewJobStatusEntry) returns (JobStatusEntry);
+}
