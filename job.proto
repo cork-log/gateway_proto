@@ -1,5 +1,6 @@
 syntax = "proto3";
 package proto;
+import "common.proto";
 
 message NewJobDescriptor{
   string source_id = 1;
@@ -14,6 +15,7 @@ message JobDescriptor{
   string name = 3;
   float tolerance = 4;
   uint32 frequency = 5;
+  string expected_at = 6;
 }
 
 message NewJobStatusType {
@@ -53,4 +55,7 @@ service SourceJob{
   rpc create_job_status_type (NewJobStatusType) returns (JobStatusType);
   rpc edit_job_status_type (JobStatusType) returns (JobStatusType);
   rpc create_job_status_entry(NewJobStatusEntry) returns (JobStatusEntry);
+  rpc get_jobs (IdQuery) returns (stream JobDescriptor);
+  rpc get_job_entries (IdQuery) returns (stream JobStatusEntry);
+  rpc get_status_types (IdQuery) returns (stream JobStatusType);
 }

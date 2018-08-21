@@ -1,0 +1,12 @@
+syntax = "proto3";
+package proto;
+
+message Empty {}
+
+message IdQuery{
+  string id = 1;
+}
+enum Direction{
+  ASCENDING = 0;
+  DESCENDING = 1;
+}

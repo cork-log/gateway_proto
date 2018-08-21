@@ -1,5 +1,6 @@
 syntax = "proto3";
 package proto;
+import "common.proto";
 
 message NewEntry{
   string source_id = 1;
@@ -25,10 +26,6 @@ message EntryQuery {
 
 message PageQuery{
   int64 take = 1;
-  enum Direction{
-    ASCENDING = 0;
-    DESCENDING = 1;
-  }
   Direction direction = 2;
   string last_timestamp = 3;
 }
