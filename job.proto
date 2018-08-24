@@ -22,7 +22,7 @@ message NewJobStatusType {
   string name = 1;
   int32 value = 2;
   bool good = 3;
-  string descriptor_id = 4;
+  string job_descriptor_id = 4;
 }
 
 message JobStatusType {
@@ -30,7 +30,7 @@ message JobStatusType {
   string name = 2;
   int32 value = 3;
   bool good = 4;
-  string descriptor_id = 5;
+  string job_descriptor_id = 5;
 }
 
 message JobStatusEntry {
