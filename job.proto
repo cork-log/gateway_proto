@@ -35,18 +35,20 @@ message JobStatusType {
 
 message JobStatusEntry {
   string id = 1;
-  string note = 2;
-  bool late = 3;
-  int32 type = 4;
-  string time_expected_at = 5;
-  string time_occurred = 6;
-  string time_stored = 7;
+  string job_descriptor_id = 2;
+  string note = 3;
+  bool late = 4;
+  int32 type = 5;
+  string time_expected_at = 6;
+  string time_occurred = 7;
+  string time_stored = 8;
 }
 
 message NewJobStatusEntry {
   string note = 1;
   int32 type = 2;
   string time_occurred = 3;
+  string job_descriptor_id = 4;
 }
 
 service SourceJob{
