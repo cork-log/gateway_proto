@@ -10,3 +10,9 @@ enum Direction{
   ASCENDING = 0;
   DESCENDING = 1;
 }
+
+message PageQuery{
+  int64 take = 1;
+  Direction direction = 2;
+  string last_timestamp = 3;
+}

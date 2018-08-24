@@ -24,12 +24,6 @@ message EntryQuery {
   PageQuery query = 2;
 }
 
-message PageQuery{
-  int64 take = 1;
-  Direction direction = 2;
-  string last_timestamp = 3;
-}
-
 
 service LogEntry {
   rpc insert (NewEntry) returns (Entry);
